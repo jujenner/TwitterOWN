@@ -2,7 +2,7 @@ package org.hs.os.model;
 
 public enum SentimentTyp {
     SEHR_POSITIV(0),
-    POSITIVE(1),
+    POSITIV(1),
     NEUTRAL(2),
     NEGATIV(3),
     SEHR_NEGATIV(4);
