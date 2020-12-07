@@ -16,13 +16,16 @@ import java.util.Properties;
 public class SentimentAnalyseService {
 
     public SentimentTyp analyse(String tweet) {
+        //Default-Wert
         SentimentTyp sentimentTyp = SentimentTyp.NEUTRAL;
         Properties props = new Properties();
+        //Schritte aus Aktivitätsdiagramm (CoreNLP)
         props.setProperty("annotators", "tokenize, ssplit, pos, parse, sentiment");
         StanfordCoreNLP nlp = new StanfordCoreNLP(props);
         Annotation annotation = nlp.process(tweet);
         for (CoreMap sentence : annotation.get(CoreAnnotations.SentencesAnnotation.class)) {
             Tree tree = sentence.get(SentimentCoreAnnotations.SentimentAnnotatedTree.class);
+            //Zuordnung der Sentiment-Typen gemaess CoreNLP
             switch (RNNCoreAnnotations.getPredictedClass(tree)) {
                 case 0:
                     sentimentTyp = SentimentTyp.SEHR_NEGATIV;
