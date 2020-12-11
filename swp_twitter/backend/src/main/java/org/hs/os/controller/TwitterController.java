@@ -26,8 +26,12 @@ public class TwitterController {
         this.feedService = feedService;
     }
 
+    //Keyword: Suchbegriff
+    //Count: Anzahl der zu ladenden Seiten (Menge der gesuchten Tweets)
+    //GetMappoing: Erreichbarkeit der URL mit Strings
     @GetMapping(path = "search/{keyword}/{count}")
     public List<TwitterStatus> fetch(@PathVariable String keyword, @PathVariable int count) throws TwitterException {
+        //FetchTweets gibt Parameter an Query in Twitter Service weiter
         return twitterService.fetchTweets(keyword, count);
     }
 

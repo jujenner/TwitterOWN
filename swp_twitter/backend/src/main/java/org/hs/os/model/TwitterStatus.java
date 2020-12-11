@@ -5,6 +5,7 @@ import java.util.UUID;
 
 public class TwitterStatus {
 
+    //Uhrzeit bestimmt ID
     private final long id = new Date().getTime();
     private final String tweet;
     private final String nutzerNamen;
