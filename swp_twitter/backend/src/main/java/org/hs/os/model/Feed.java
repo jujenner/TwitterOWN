@@ -4,11 +4,17 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Column;
 
 @Entity
+@Table(name = "feed_table")
 public class Feed {
 
+    @Column(name = "keyword")
     private final String keyword;
+
+    @Column(name = "count")
     private final int count;
 
     @Id

@@ -23,10 +23,12 @@ public class FeedService {
         this.feedRepository = feedRepository;
     }
 
+    // Feed anlegen
     public Feed createFeed(String keyword, int count, int period, @Nullable Date end) {
         Feed feed = new Feed(keyword, count);
         taskService.scheduleTask(new FeedTask(feed), feed.getId(), period);
 
+        // Wenn keine Endzeit angegeben, dann stoppt der Feed
         if (end != null) {
             taskService.getScheduler().schedule(new StopTask(feed.getId(), taskService), end);
         }
@@ -36,6 +38,7 @@ public class FeedService {
         return feed;
     }
 
+    //Alle Feed aus DB holen
     public List<Feed> getAll() {
         return feedRepository.findAll();
     }

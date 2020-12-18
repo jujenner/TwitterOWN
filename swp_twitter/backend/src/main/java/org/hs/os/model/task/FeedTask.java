@@ -18,6 +18,9 @@ public class FeedTask implements Runnable {
         this.feed = feed;
     }
 
+
+    // ????
+    // Feeds in DB speichern?
     @Override
     public void run() {
         try {

@@ -2,20 +2,36 @@ package org.hs.os.model;
 
 import java.util.Date;
 import java.util.UUID;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name = "twitter_status")
 public class TwitterStatus {
 
     //Uhrzeit bestimmt ID
+    @Id
+    @Column(name = "id")
     private final long id = new Date().getTime();
-    private final String tweet;
-    private final String nutzerNamen;
-    private final Date erstelltAm = new Date();
-    private final Analyse ergebniss;
 
-    public TwitterStatus(String tweet, String nutzerNamen, Analyse ergebniss) {
+    @Column(name = "tweet")
+    private final String tweet;
+
+    @Column(name = "nutzer_name")
+    private final String nutzerNamen;
+
+    @Column(name = "erstellt_am")
+    private final Date erstelltAm = new Date();
+
+    @Column(name = "ergebnis")
+    private final Analyse ergebnis;
+
+    public TwitterStatus(String tweet, String nutzerNamen, Analyse ergebnis) {
         this.tweet = tweet;
         this.nutzerNamen = nutzerNamen;
-        this.ergebniss = ergebniss;
+        this.ergebnis = ergebnis;
     }
 
     public long getId() {
@@ -34,7 +50,7 @@ public class TwitterStatus {
         return erstelltAm;
     }
 
-    public Analyse getErgebniss() {
-        return ergebniss;
+    public Analyse getErgebnis() {
+        return ergebnis;
     }
 }
