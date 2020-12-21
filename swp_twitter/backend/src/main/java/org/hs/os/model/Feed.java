@@ -1,29 +1,35 @@
 package org.hs.os.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.persistence.Column;
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "feed_table")
 public class Feed {
 
     @Column(name = "keyword")
-    private final String keyword;
+    private String keyword;
 
     @Column(name = "count")
-    private final int count;
+    private int count;
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
 
-    public Feed(String keyword, int count) {
+    @OneToMany
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private List<TwitterStatus> twitterStatus;
+
+    public Feed() {
+    }
+
+    public Feed(String keyword, int count, List<TwitterStatus> twitterStatus) {
         this.keyword = keyword;
         this.count = count;
+        this.twitterStatus = twitterStatus;
     }
 
     public String getKeyword() {
@@ -36,5 +42,25 @@ public class Feed {
 
     public long getId() {
         return id;
+    }
+
+    public List<TwitterStatus> getTwitterStatus() {
+        return twitterStatus;
+    }
+
+    public void setTwitterStatus(List<TwitterStatus> twitterStatus) {
+        this.twitterStatus = twitterStatus;
+    }
+
+    public void setKeyword(String keyword) {
+        this.keyword = keyword;
+    }
+
+    public void setCount(int count) {
+        this.count = count;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 }

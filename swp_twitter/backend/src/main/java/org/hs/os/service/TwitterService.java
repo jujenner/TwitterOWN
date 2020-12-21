@@ -44,15 +44,15 @@ public class TwitterService {
         List<Status> tweets = result.getTweets();
         //Ablegen der Items/Tweets in Liste und Anzeigen aller Tweets
         return tweets.stream()
-                .map(item -> new TwitterStatus(item.getText().trim(), item.getUser().getName(), analyseTweet(item.getText(), keyword))
+                .map(item -> new TwitterStatus(keyword, item.getUser().getName(), analyseTweet(item.getText()), item.getId())
                 ).collect(Collectors.toList());
 
     }
 
     //Analyse der Tweets
-    private Analyse analyseTweet(String text, String keyword) {
+    private Analyse analyseTweet(String text) {
         SentimentTyp result = analyseService.analyse(cleanTweet(text));
-        return new Analyse(result, keyword);
+        return new Analyse(result);
     }
 
     //Bereinigung der Tweets zur besseren Auswertung

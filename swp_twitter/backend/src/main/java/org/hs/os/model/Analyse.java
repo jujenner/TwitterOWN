@@ -1,10 +1,6 @@
 package org.hs.os.model;
 
-import java.util.Date;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "analyse_ergebnis")
@@ -12,17 +8,17 @@ public class Analyse {
 
     @Id
     @Column(name = "analyse_id")
-    private final long id = new Date().getTime();
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
 
     @Column(name = "sentiment_typ")
-    private final SentimentTyp sentimentTyp;
+    private SentimentTyp sentimentTyp;
 
-    @Column(name = "keyword")
-    private final String suchWort;
+    public Analyse() {
+    }
 
-    public Analyse(SentimentTyp sentimentTyp, String suchWort) {
+    public Analyse(SentimentTyp sentimentTyp) {
         this.sentimentTyp = sentimentTyp;
-        this.suchWort = suchWort;
     }
 
     public long getId() {
@@ -33,7 +29,11 @@ public class Analyse {
         return sentimentTyp;
     }
 
-    public String getSuchWort() {
-        return suchWort;
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setSentimentTyp(SentimentTyp sentimentTyp) {
+        this.sentimentTyp = sentimentTyp;
     }
 }

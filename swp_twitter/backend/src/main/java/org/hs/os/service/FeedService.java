@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import reactor.util.annotation.Nullable;
 
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -15,25 +16,27 @@ import java.util.List;
 public class FeedService {
 
     private final TaskService taskService;
+    private final TwitterService twitterService;
     private final FeedRepository feedRepository;
 
     @Autowired
-    public FeedService(TaskService taskService, FeedRepository feedRepository) {
+    public FeedService(TaskService taskService, TwitterService twitterService, FeedRepository feedRepository) {
         this.taskService = taskService;
+        this.twitterService = twitterService;
         this.feedRepository = feedRepository;
     }
 
     // Feed anlegen
     public Feed createFeed(String keyword, int count, int period, @Nullable Date end) {
-        Feed feed = new Feed(keyword, count);
-        taskService.scheduleTask(new FeedTask(feed), feed.getId(), period);
+        Feed feed = new Feed(keyword, count, Collections.emptyList());
+        feedRepository.save(feed);
+
+        taskService.scheduleTask(new FeedTask(twitterService, feedRepository, feed), feed.getId(), period);
 
         // Wenn keine Endzeit angegeben, dann stoppt der Feed
         if (end != null) {
             taskService.getScheduler().schedule(new StopTask(feed.getId(), taskService), end);
         }
-
-        feedRepository.save(feed);
 
         return feed;
     }

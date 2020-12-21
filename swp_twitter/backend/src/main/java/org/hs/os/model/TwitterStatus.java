@@ -1,11 +1,9 @@
 package org.hs.os.model;
 
+import org.hibernate.annotations.Cascade;
+
+import javax.persistence.*;
 import java.util.Date;
-import java.util.UUID;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
 @Table(name = "twitter_status")
@@ -14,32 +12,38 @@ public class TwitterStatus {
     //Uhrzeit bestimmt ID
     @Id
     @Column(name = "id")
-    private final long id = new Date().getTime();
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private long id;
+
+    @Column(name = "keyword")
+    private String suchWort;
 
     @Column(name = "tweet")
-    private final String tweet;
+    private long tweetId;
 
     @Column(name = "nutzer_name")
-    private final String nutzerNamen;
+    private String nutzerNamen;
 
     @Column(name = "erstellt_am")
     private final Date erstelltAm = new Date();
 
-    @Column(name = "ergebnis")
-    private final Analyse ergebnis;
+    @JoinColumn(name = "ergebnis")
+    @OneToOne
+    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    private Analyse ergebnis;
 
-    public TwitterStatus(String tweet, String nutzerNamen, Analyse ergebnis) {
-        this.tweet = tweet;
+    public TwitterStatus() {
+    }
+
+    public TwitterStatus(String suchWort, String nutzerNamen, Analyse ergebnis, long tweetId) {
+        this.suchWort = suchWort;
         this.nutzerNamen = nutzerNamen;
         this.ergebnis = ergebnis;
+        this.tweetId = tweetId;
     }
 
     public long getId() {
         return id;
-    }
-
-    public String getTweet() {
-        return tweet;
     }
 
     public String getNutzerNamen() {
@@ -52,5 +56,33 @@ public class TwitterStatus {
 
     public Analyse getErgebnis() {
         return ergebnis;
+    }
+
+    public String getSuchWort() {
+        return suchWort;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public void setSuchWort(String suchWort) {
+        this.suchWort = suchWort;
+    }
+
+    public long getTweetId() {
+        return tweetId;
+    }
+
+    public void setTweetId(long tweetId) {
+        this.tweetId = tweetId;
+    }
+
+    public void setNutzerNamen(String nutzerNamen) {
+        this.nutzerNamen = nutzerNamen;
+    }
+
+    public void setErgebnis(Analyse ergebnis) {
+        this.ergebnis = ergebnis;
     }
 }
