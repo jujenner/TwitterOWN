@@ -7,10 +7,7 @@ import org.hs.os.repositories.FeedRepository;
 import org.hs.os.service.FeedService;
 import org.hs.os.service.TwitterService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import twitter4j.TwitterException;
 
 import java.util.Date;
@@ -59,5 +56,11 @@ public class TwitterController {
     @PostMapping(path = "feed/{keyword}/{count}/{period}/{end}")
     public Feed createFeedWithEnd(@PathVariable String keyword, @PathVariable int count, @PathVariable int period, @PathVariable long end) {
         return feedService.createFeed(keyword, count, period, new Date(end));
+    }
+
+    @DeleteMapping(path = "feed/{id}")
+    public void deleteFeed(@PathVariable long id) {
+        feedService.stopFeed(id);
+        feedService.deleteFeed(id);
     }
 }

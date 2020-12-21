@@ -57,6 +57,10 @@ public class FeedService {
         feedRepository.delete(feed);
     }
 
+    public void stopFeed(long id) {
+        taskService.stopTask(id);
+    }
+
     public void deleteAll() {
         feedRepository.deleteAll();
     }
