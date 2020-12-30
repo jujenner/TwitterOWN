@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'twitter-analyse-frontend';
+
+  bildLogo: string ='assets/images/Logo.PNG';
 }
