@@ -7,11 +7,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
+import { FinanceFeedAnzeigenComponent } from "./finance-feed-anzeigen/finance-feed-anzeigen.component";
+import { FinanceFeedAnlegenComponent } from "./finance-feed-anlegen/finance-feed-anlegen.component";
+import { AnalyseErgebnisComponent } from "./analyse-ergebnis/analyse-ergebnis.component";
 
 @NgModule({
   declarations: [
     AppComponent,
-    HauptmenueComponent
+    HauptmenueComponent,
+    FinanceFeedAnzeigenComponent,
+    FinanceFeedAnlegenComponent,
+    AnalyseErgebnisComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +26,6 @@ import { HauptmenueComponent } from './hauptmenue/hauptmenue.component';
     MaterialModule,
     HttpClientModule,
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
