@@ -1,1 +1,46 @@
 <p>finance-feeds-anzeigen works!</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="Id">
+    <th mat-header-cell *matHeaderCellDef> id </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="Finance Feed">
+    <th mat-header-cell *matHeaderCellDef> keyword </th>
+    <td mat-cell *matCellDef="let element"> {{element.keyword}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="erstellt am">
+    <th mat-header-cell *matHeaderCellDef> erstelltAm </th>
+    <td mat-cell *matCellDef="let element"> {{element.erstelltAm}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Suchintervall">
+    <th mat-header-cell *matHeaderCellDef> Suchintervall </th>
+    <td mat-cell *matCellDef="let element"> {{element.suchintervall}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Dauer">
+    <th mat-header-cell *matHeaderCellDef> Dauer </th>
+    <td mat-cell *matCellDef="let element"> {{element.dauer}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="Status">
+    <th mat-header-cell *matHeaderCellDef> Status </th>
+    <td mat-cell *matCellDef="let element"> {{element.status}} </td>
+  </ng-container>
+
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
