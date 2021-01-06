@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Feed } from '../feed';
+
+
 
 @Component({
   selector: 'app-finance-feed-anlegen',
@@ -7,9 +10,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinanceFeedAnlegenComponent implements OnInit {
 
-  constructor() { }
+//feeds = [
+//  new Feed(1, "SAP", new Date(), new Date(), "Positiv", new Date()),
+//  new Feed(1, "IBM", new Date(), new Date(), "Negativ", new Date()),
+//];
 
-  ngOnInit(): void {
+// public dataSource = this.feeds;
+
+constructor() { }
+
+
+
+
+
+ ngOnInit(): void {
   }
+   }
 
-}
+
+
+
+
+
+
+//}
