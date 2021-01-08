@@ -41,4 +41,12 @@ feed: Feed   */
   return  this.http.post<void>(url,this.httpOptions)
 
   }
+
+  /**
+   * getFeed
+id: number : Observable<Feed>  */
+  public getFeed(id: number): Observable<Feed> {
+      return this.http.get<FeedDto>("http://localhost:8080/feed/"+id, this.httpOptions)
+      .pipe(map((feed: FeedDto) => new Feed(feed.id, feed.keyword, new Date(feed.erstelltAm), new Date(feed.suchIntervall), "",new Date(feed.suchDauer))))
+  }
 }
