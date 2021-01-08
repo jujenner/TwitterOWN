@@ -1,25 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Feed } from '../feed';
+import { ApiService } from '../api-service';
 
 @Component({
   selector: 'app-finance-feed-anzeigen',
   templateUrl: './finance-feed-anzeigen.component.html',
-  styleUrls: ['./finance-feed-anzeigen.component.css']
+  styleUrls: ['./finance-feed-anzeigen.component.css'],
+  providers: [ApiService]
 })
 export class FinanceFeedAnzeigenComponent implements OnInit {
 
 public displayedColumns: string[] = ['id', 'keyword', 'erstelltAm', 'suchintervall','status', 'dauer'];
 
-feeds = [
-  new Feed(1, "SAP", new Date(), new Date(), "Positiv", new Date()),
-  new Feed(1, "IBM", new Date(), new Date(), "Negativ", new Date()),
-];
+ public dataSource: Feed[] = [];
 
- public dataSource = this.feeds;
-
- constructor() { }
+ constructor(private apiService: ApiService) { }
 
  ngOnInit(): void {
+   this.apiService.getFeeds().subscribe(feeds => {
+      this.dataSource = feeds
+   });
  }
 
 }

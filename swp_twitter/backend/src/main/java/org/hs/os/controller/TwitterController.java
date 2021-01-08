@@ -55,14 +55,14 @@ public class TwitterController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(path = "feed/{keyword}/{count}/{period}")
-    public Feed createFeed(@PathVariable String keyword, @PathVariable int count, @PathVariable int period) {
-        return feedService.createFeed(keyword, count, period, null);
+    public Feed createFeed(@PathVariable String keyword, @PathVariable int count, @PathVariable long period) {
+        return feedService.createFeed(keyword, count, new Date(period).getTime(), null);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(path = "feed/{keyword}/{count}/{period}/{end}")
-    public Feed createFeedWithEnd(@PathVariable String keyword, @PathVariable int count, @PathVariable int period, @PathVariable long end) {
-        return feedService.createFeed(keyword, count, period, new Date(end));
+    public Feed createFeedWithEnd(@PathVariable String keyword, @PathVariable int count, @PathVariable long period, @PathVariable long end) {
+        return feedService.createFeed(keyword, count, new Date(period).getTime(), new Date(end));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

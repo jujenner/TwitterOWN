@@ -27,8 +27,8 @@ public class FeedService {
     }
 
     // Feed anlegen
-    public Feed createFeed(String keyword, int count, int period, @Nullable Date end) {
-        Feed feed = new Feed(keyword, count, Collections.emptyList());
+    public Feed createFeed(String keyword, int count, long period, @Nullable Date end) {
+        Feed feed = new Feed(keyword, count, new Date(), end, new Date(period),Collections.emptyList());
         feedRepository.save(feed);
 
         taskService.scheduleTask(new FeedTask(twitterService, feedRepository, feed), feed.getId(), period);

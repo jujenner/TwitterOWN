@@ -10,7 +10,6 @@ public class SentimentanalysisApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(SentimentanalysisApplication.class, args);
-        System.out.print("Dalli stinkt");
     }
 
 }

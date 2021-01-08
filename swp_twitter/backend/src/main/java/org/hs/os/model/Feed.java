@@ -3,6 +3,7 @@ package org.hs.os.model;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -15,6 +16,12 @@ public class Feed {
     @Column(name = "count")
     private int count;
 
+    private Date erstelltAm;
+
+    private Date suchDauer;
+
+    private Date suchIntervall;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
@@ -26,9 +33,12 @@ public class Feed {
     public Feed() {
     }
 
-    public Feed(String keyword, int count, List<TwitterStatus> twitterStatus) {
+    public Feed(String keyword, int count, Date erstelltAm, Date suchDauer, Date suchIntervall, List<TwitterStatus> twitterStatus) {
         this.keyword = keyword;
         this.count = count;
+        this.erstelltAm = erstelltAm;
+        this.suchDauer = suchDauer;
+        this.suchIntervall = suchIntervall;
         this.twitterStatus = twitterStatus;
     }
 
@@ -62,5 +72,29 @@ public class Feed {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Date getErstelltAm() {
+        return erstelltAm;
+    }
+
+    public void setErstelltAm(Date erstelltAm) {
+        this.erstelltAm = erstelltAm;
+    }
+
+    public Date getSuchDauer() {
+        return suchDauer;
+    }
+
+    public void setSuchDauer(Date suchDauer) {
+        this.suchDauer = suchDauer;
+    }
+
+    public Date getSuchIntervall() {
+        return suchIntervall;
+    }
+
+    public void setSuchIntervall(Date suchIntervall) {
+        this.suchIntervall = suchIntervall;
     }
 }
