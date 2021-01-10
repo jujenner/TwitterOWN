@@ -36,6 +36,7 @@ public class FeedTask implements Runnable {
             feed.setTwitterStatus(twitterStatus);
             feedRepository.save(feed);
         } catch (TwitterException e) {
+            System.out.println("Failed to load tweets");
             e.printStackTrace();
         }
         System.out.println(

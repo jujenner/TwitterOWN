@@ -6,23 +6,23 @@ import org.hs.os.model.SentimentTyp;
 public class AnalyseDto {
 
     private final long id;
-    private final SentimentTyp sentimentTyp;
+    private final int sentimentTyp;
 
-    public AnalyseDto(long id, SentimentTyp sentimentTyp) {
+    public AnalyseDto(long id, int sentimentTyp) {
         this.id = id;
         this.sentimentTyp = sentimentTyp;
     }
 
     public AnalyseDto(Analyse analyse) {
         this.id = analyse.getId();
-        this.sentimentTyp = analyse.getSentimentTyp();
+        this.sentimentTyp = analyse.getSentimentTyp().getValue();
     }
 
     public long getId() {
         return id;
     }
 
-    public SentimentTyp getSentimentTyp() {
+    public int getSentimentTyp() {
         return sentimentTyp;
     }
 }

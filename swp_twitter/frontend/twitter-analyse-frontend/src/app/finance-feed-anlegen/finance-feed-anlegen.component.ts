@@ -47,7 +47,7 @@ export class FinanceFeedAnlegenComponent implements OnInit {
           default:
             break;
         }
-        var feed = new Feed(1, this.suchwort, new Date(),suchIntervall, "Positiv",  this.selectedSearchDauer);
+        var feed = new Feed(1, this.suchwort, new Date(),suchIntervall, "Positiv",  this.selectedSearchDauer, []);
         this.apiService.createFeed(feed).subscribe(feed => {
           console.log("Created new feed "+feed);
         })

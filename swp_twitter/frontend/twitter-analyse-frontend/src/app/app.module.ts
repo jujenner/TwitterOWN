@@ -11,6 +11,8 @@ import { FinanceFeedAnzeigenComponent } from "./finance-feed-anzeigen/finance-fe
 import { FinanceFeedAnlegenComponent } from "./finance-feed-anlegen/finance-feed-anlegen.component";
 import { AnalyseErgebnisComponent } from "./analyse-ergebnis/analyse-ergebnis.component";
 
+import { ChartsModule } from 'ng2-charts';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,6 +27,7 @@ import { AnalyseErgebnisComponent } from "./analyse-ergebnis/analyse-ergebnis.co
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    ChartsModule
   ],
   bootstrap: [AppComponent]
 })

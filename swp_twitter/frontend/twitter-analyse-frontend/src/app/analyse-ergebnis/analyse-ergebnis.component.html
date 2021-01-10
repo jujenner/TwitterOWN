@@ -1,1 +1,11 @@
-<p>analyse-ergebnis works!</p>
+<h1>Analyseergebnis zum Suchbegriff '{{keyword}}'</h1>
+
+<div style="display: block">
+    <canvas baseChart
+            [data]="pieChartData"
+            [labels]="pieChartLabels"
+            [colors]="pieColors"
+            [chartType]="'pie'"></canvas>
+  </div>
+
+  <p>Letzte Auswertung am {{letzteAkutalisierung}}</p>
