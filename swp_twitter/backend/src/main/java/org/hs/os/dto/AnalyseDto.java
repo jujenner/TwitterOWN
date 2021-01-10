@@ -1,7 +1,6 @@
 package org.hs.os.dto;
 
 import org.hs.os.model.Analyse;
-import org.hs.os.model.SentimentTyp;
 
 public class AnalyseDto {
 

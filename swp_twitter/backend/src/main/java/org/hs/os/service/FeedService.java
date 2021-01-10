@@ -11,6 +11,7 @@ import reactor.util.annotation.Nullable;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @Service
 public class FeedService {
@@ -27,11 +28,16 @@ public class FeedService {
     }
 
     // Feed anlegen
-    public Feed createFeed(String keyword, int count, long period, @Nullable Date end) {
-        Feed feed = new Feed(keyword, count, new Date(), end, new Date(period),Collections.emptyList());
+    public Feed createFeed(String keyword, int count, Date period, @Nullable Date end) {
+        Feed feed = new Feed(keyword, count, new Date(), end, period,Collections.emptyList());
         feedRepository.save(feed);
 
-        taskService.scheduleTask(new FeedTask(twitterService, feedRepository, feed), feed.getId(), period);
+        long time = TimeUnit.MINUTES.toMillis(period.getMinutes());
+        if (time == 0){
+            time = TimeUnit.HOURS.toMillis(period.getHours());
+        }
+
+        taskService.scheduleTask(new FeedTask(twitterService, feedRepository, feed), feed.getId(), time);
 
         // Wenn keine Endzeit angegeben, dann stoppt der Feed
         if (end != null) {

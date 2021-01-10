@@ -36,7 +36,7 @@ export class ApiService {
    * createFeed
 feed: Feed   */
   public createFeed(feed: Feed): Observable<void> {
-    var url = "http://localhost:8080/feed/"+feed.keyword+"/"+20+"/"+feed.suchintervall.getTime()
+    var url = "http://localhost:8080/feed/"+feed.keyword+"/"+50+"/"+feed.suchintervall.getTime()
     if (feed.dauer != null) {
       url = url+"/"+feed.dauer.getTime()
 

@@ -56,13 +56,13 @@ public class TwitterController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(path = "feed/{keyword}/{count}/{period}")
     public Feed createFeed(@PathVariable String keyword, @PathVariable int count, @PathVariable long period) {
-        return feedService.createFeed(keyword, count, new Date(period).getTime(), null);
+        return feedService.createFeed(keyword, count, new Date(period), null);
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(path = "feed/{keyword}/{count}/{period}/{end}")
     public Feed createFeedWithEnd(@PathVariable String keyword, @PathVariable int count, @PathVariable long period, @PathVariable long end) {
-        return feedService.createFeed(keyword, count, new Date(period).getTime(), new Date(end));
+        return feedService.createFeed(keyword, count, new Date(period), new Date(end));
     }
 
     @CrossOrigin(origins = "http://localhost:4200")

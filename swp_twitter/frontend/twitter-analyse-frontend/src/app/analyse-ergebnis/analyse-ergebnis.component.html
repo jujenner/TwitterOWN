@@ -1,11 +1,26 @@
 <h1>Analyseergebnis zum Suchbegriff '{{keyword}}'</h1>
 
 <div style="display: block">
-    <canvas baseChart
+    <canvas baseChart height="20vh" width="80vw"
             [data]="pieChartData"
             [labels]="pieChartLabels"
             [colors]="pieColors"
             [chartType]="'pie'"></canvas>
   </div>
 
-  <p>Letzte Auswertung am {{letzteAkutalisierung}}</p>
+  <div style="display: block;">
+    <canvas baseChart height="20vh" width="80vw"
+    [datasets]="lineChartData"
+      [labels]="lineChartLabels"
+      [colors]="lineChartColors"
+      [legend]="lineChartLegend"
+      [chartType]="'line'">
+    </canvas>
+  </div>
+  
+
+  <p>Letzte Auswertung am {{letzteAkutalisierung}}</p> 
+
+  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="refresh()">
+    <mat-icon>refresh</mat-icon>
+  </button>
