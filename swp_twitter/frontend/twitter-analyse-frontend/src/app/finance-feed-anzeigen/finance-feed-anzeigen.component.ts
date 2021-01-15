@@ -11,7 +11,7 @@ import {Router} from '@angular/router';
 })
 export class FinanceFeedAnzeigenComponent implements OnInit {
 
-public displayedColumns: string[] = ['id', 'keyword', 'erstelltAm', 'suchintervall','status', 'dauer'];
+public displayedColumns: string[] = ['id', 'keyword', 'erstelltAm', 'suchintervall', 'dauer'];
 
  public dataSource: Feed[] = [];
 

@@ -1,14 +1,13 @@
-<p>finance-feed-anlegen works!</p>
-
-<div class="example-container">
-  <mat-form-field appearance="fill">
+<div class="example-container" style="margin: auto;width: 50%; margin-top: 8em;">
+  <h1>Feed anlegen</h1>
+  <mat-form-field appearance="fill" style="margin-top: auto;">
     <mat-label>Suchwort</mat-label>
     <input matInput type="text" [(ngModel)]="suchwort">
   </mat-form-field>
   <br>
   <mat-form-field appearance="fill">
     <mat-label>Suchintervall</mat-label>
-    <mat-select [(value)]="selectedIntervallValue" required>
+    <mat-select [(value)]="selectedIntervallValue">
       <mat-option value="2min">2 min</mat-option>
       <mat-option value="1h">1 h</mat-option>
       <mat-option value="2h">2 h</mat-option>
@@ -17,15 +16,14 @@
   <br>
 
   <mat-form-field appearance="fill">
-    <mat-label>Choose a date</mat-label>
-    <input matInput [matDatepicker]="picker" (dateInput)="setSearchDauer('input', $event)">
+    <mat-label>Wähle ein Enddatum</mat-label>
+    <input matInput [matDatepicker]="picker" [min]="now" (dateInput)="setSearchDauer('input', $event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
   </mat-form-field>
 </div>
 
-
-<div class="button-div">
+<div class="button-div" style="margin: auto; width: 50%;">
   <button mat-button color="primary" routerLink="/hauptmenue">Zur&uuml;ck</button>
-    <button mat-button color="primary" (click)="submit()">submit</button>
+    <button mat-button color="primary" (click)="submit()">Anlegen</button>
 </div>

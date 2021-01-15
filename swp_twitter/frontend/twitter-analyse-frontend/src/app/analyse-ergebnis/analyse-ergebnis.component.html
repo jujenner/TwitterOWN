@@ -1,5 +1,8 @@
-<h1>Analyseergebnis zum Suchbegriff '{{keyword}}'</h1>
+<h1 style="margin: auto; margin-left: 2em; margin-top: 2em; ">Analyseergebnis zum Suchbegriff '{{keyword}}'</h1>
 
+<div style="margin: auto;width: 95%; margin-top: 8em;">
+
+<h3 style="text-align: center; margin-top: 4em;">Gesamtergebnis</h3>
 <div style="display: block">
     <canvas baseChart height="20vh" width="80vw"
             [data]="pieChartData"
@@ -8,7 +11,8 @@
             [chartType]="'pie'"></canvas>
   </div>
 
-  <div style="display: block;">
+  <h3 style="text-align: center; margin-top: 4em;">Zeitlicher Verlauf</h3>
+  <div style="display: block;" style="margin-top: 1em;">
     <canvas baseChart height="20vh" width="80vw"
     [datasets]="lineChartData"
       [labels]="lineChartLabels"
@@ -18,9 +22,13 @@
     </canvas>
   </div>
   
-
-  <p>Letzte Auswertung am {{letzteAkutalisierung}}</p> 
-
-  <button mat-fab color="primary" aria-label="Example icon button with a delete icon" (click)="refresh()">
+<div style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 4em; margin-bottom: 4em;">
+  <button mat-fab color="primary" (click)="refresh()">
     <mat-icon>refresh</mat-icon>
   </button>
+
+  <p style="margin-left: 2em;">Letzte Auswertung am {{letzteAkutalisierung}}</p> 
+
+</div>
+
+</div>

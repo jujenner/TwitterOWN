@@ -23,7 +23,7 @@ public class Feed {
     private Date suchIntervall;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
     @OneToMany

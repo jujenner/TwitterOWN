@@ -55,7 +55,10 @@ id: number : Observable<Feed>  */
   }
 
   private mapFeed(feedDto:FeedDto): Feed {
-    return new Feed(feedDto.id, feedDto.keyword, new Date(feedDto.erstelltAm), new Date(feedDto.suchIntervall), "",new Date(feedDto.suchDauer), 
+    var periodDate = new Date(0, 0, 0);
+    periodDate.setTime(feedDto.suchIntervall)
+    
+    return new Feed(feedDto.id, feedDto.keyword, new Date(feedDto.erstelltAm), periodDate, "",new Date(feedDto.suchDauer), 
     feedDto.twitterStatus.map((status: TwitterStatusDto) => new TwitterStatus(status.id, status.tweetId, status.nutzerNamen, new Date(status.erstelltAm), this.mapErgebnis(status.ergebnis))));
   }
 

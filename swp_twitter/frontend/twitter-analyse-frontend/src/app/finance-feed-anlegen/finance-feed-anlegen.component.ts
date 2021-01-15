@@ -3,6 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {MatDatepickerInputEvent} from '@angular/material/datepicker';
 import { Feed } from '../feed';
 import { ApiService } from '../api-service';
+import {MatDialog} from '@angular/material/dialog';
 
 
 
@@ -15,10 +16,11 @@ import { ApiService } from '../api-service';
 export class FinanceFeedAnlegenComponent implements OnInit {
 
     selectedIntervallValue = "";
-    selectedSearchDauer: Date = new Date();
+    private now = new Date()
+    selectedSearchDauer: Date = this.now;
     suchwort = ""
 
-    constructor(private apiService: ApiService) { }
+    constructor(private apiService: ApiService, public dialog: MatDialog) { }
 
      ngOnInit(): void {
       }
@@ -29,7 +31,21 @@ export class FinanceFeedAnlegenComponent implements OnInit {
         }
       }
 
+      openErfolgDialog() {
+        this.dialog.open(FinanceFeedAnlegeErfolgDialog);
+      }
+
+      openFehlerDialog() {
+        this.dialog.open(FinanceFeedAnlegenFehlerDialog);
+      }
+
        submit(): void {
+
+        if(this.selectedIntervallValue == "" || this.suchwort == "" || this.selectedSearchDauer == this.now){
+          this.openFehlerDialog()
+          return
+        }
+
         var suchIntervall = new Date()
         suchIntervall.setHours(0)
         suchIntervall.setMinutes(0);
@@ -50,21 +66,20 @@ export class FinanceFeedAnlegenComponent implements OnInit {
         var feed = new Feed(1, this.suchwort, new Date(),suchIntervall, "Positiv",  this.selectedSearchDauer, []);
         this.apiService.createFeed(feed).subscribe(feed => {
           console.log("Created new feed "+feed);
+          this.openErfolgDialog()
         })
       }
-
-//feeds = [
-//  new Feed(1, "SAP", new Date(), new Date(), "Positiv", new Date()),
-//  new Feed(1, "IBM", new Date(), new Date(), "Negativ", new Date()),
-//];
-
-// public dataSource = this.feeds;
    }
 
+   
+@Component({
+  selector: 'finance-feed-anlege-erfolg-dialog',
+  templateUrl: 'finance-feed-anlege-erfolg-dialog.html',
+})
+export class FinanceFeedAnlegeErfolgDialog {}
 
-
-
-
-
-
-//}
+@Component({
+  selector: 'finance-feed-anlegen-fehler-dialog',
+  templateUrl: 'finance-feed-anlegen-fehler-dialog.html',
+})
+export class FinanceFeedAnlegenFehlerDialog {}

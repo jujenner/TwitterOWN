@@ -24,8 +24,8 @@
     "@angular/router": "~11.0.5",
     "angular-messages": "^1.8.2",
     "chart.js": "2.7.2",
-    "ng2-charts": "1.6.0",
     "clean": "^4.0.2",
+    "ng2-charts": "1.6.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.2"

@@ -21,7 +21,7 @@ export class AnalyseErgebnisComponent implements OnInit {
  // Pie
  public pieChartLabels:string[] = ['Sehr Positiv', 'Positiv', 'Neutral','Negativ','Sehr Negativ'];
  public pieChartData:number[] = [0,0,0,0,0];
- private pieColors=[
+  public pieColors=[
   {
     backgroundColor: [
       'rgba(8, 127, 35, 1)',
