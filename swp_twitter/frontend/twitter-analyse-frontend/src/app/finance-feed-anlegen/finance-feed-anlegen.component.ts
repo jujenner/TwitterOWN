@@ -16,7 +16,7 @@ import {MatDialog} from '@angular/material/dialog';
 export class FinanceFeedAnlegenComponent implements OnInit {
 
     selectedIntervallValue = "";
-    private now = new Date()
+    public now = new Date()
     selectedSearchDauer: Date = this.now;
     suchwort = ""
 
@@ -71,7 +71,7 @@ export class FinanceFeedAnlegenComponent implements OnInit {
       }
    }
 
-   
+
 @Component({
   selector: 'finance-feed-anlege-erfolg-dialog',
   templateUrl: 'finance-feed-anlege-erfolg-dialog.html',

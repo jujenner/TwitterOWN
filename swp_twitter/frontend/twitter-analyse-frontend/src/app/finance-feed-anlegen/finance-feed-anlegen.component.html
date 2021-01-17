@@ -1,5 +1,5 @@
 <div class="example-container" style="margin: auto;width: 50%; margin-top: 8em;">
-  <h1>Feed anlegen</h1>
+  <h1>Finance-Feed anlegen</h1>
   <mat-form-field appearance="fill" style="margin-top: auto;">
     <mat-label>Suchwort</mat-label>
     <input matInput type="text" [(ngModel)]="suchwort">
@@ -16,7 +16,7 @@
   <br>
 
   <mat-form-field appearance="fill">
-    <mat-label>Wähle ein Enddatum</mat-label>
+    <mat-label>W&auml;hle ein Enddatum</mat-label>
     <input matInput [matDatepicker]="picker" [min]="now" (dateInput)="setSearchDauer('input', $event)">
     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
     <mat-datepicker #picker></mat-datepicker>
@@ -24,6 +24,6 @@
 </div>
 
 <div class="button-div" style="margin: auto; width: 50%;">
-  <button mat-button color="primary" routerLink="/hauptmenue">Zur&uuml;ck</button>
-    <button mat-button color="primary" (click)="submit()">Anlegen</button>
+  <button mat-stroked-button color="primary" routerLink="/hauptmenue">Zur&uuml;ck</button>
+    <button mat-stroked-button color="primary" (click)="submit()">Anlegen</button>
 </div>

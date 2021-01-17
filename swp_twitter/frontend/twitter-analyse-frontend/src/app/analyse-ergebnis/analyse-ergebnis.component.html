@@ -21,14 +21,18 @@
       [chartType]="'line'">
     </canvas>
   </div>
-  
+
 <div style="display: flex; flex-direction: row; justify-content: center; align-items: center; margin-top: 4em; margin-bottom: 4em;">
   <button mat-fab color="primary" (click)="refresh()">
     <mat-icon>refresh</mat-icon>
   </button>
 
-  <p style="margin-left: 2em;">Letzte Auswertung am {{letzteAkutalisierung}}</p> 
+  <p style="margin-left: 2em;">Letzte Auswertung am {{letzteAkutalisierung}}</p>
 
 </div>
+
+  <div class="button-div" style="margin: auto; width: 50%;">
+    <button mat-stroked-button color="primary" routerLink="/hauptmenue">Zur&uuml;ck</button>
+  </div>
 
 </div>

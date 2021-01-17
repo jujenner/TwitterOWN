@@ -1,7 +1,8 @@
-### First steps
+#1. Schritt
+In `twitter-analyse-frontend` navigieren und `npm install --force` in die Kommando-Zeile eingeben
 
-In `twitter-analyse-frontend` navigieren und dann `npm install --force`
+#2. Schritt 
+Starte Backend-Server in `backend` und in Kommando-Zeile `mvn spring-boot:run` eingeben
 
-### Running the app
-
-Start afterward the backend server using `mvn spring-boot:run` and the frontend `npm start`.
+#3. Schritt 
+Frontend starten in `twitter-analyse-frontend` und in Kommando-Zeile eingeben `npm start`.
