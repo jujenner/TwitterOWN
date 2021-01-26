@@ -1,3 +1,5 @@
+Voraussetzung: node.js und maven müssen installiert sein
+
 #1. Schritt
 In `twitter-analyse-frontend` navigieren und `npm install --force` in die Kommando-Zeile eingeben
 

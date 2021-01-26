@@ -1,7 +1,6 @@
 package org.hs.os.model;
 
 import org.hibernate.annotations.Cascade;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -9,7 +8,6 @@ import java.util.Date;
 @Table(name = "twitter_status")
 public class TwitterStatus {
 
-    //Uhrzeit bestimmt ID
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)

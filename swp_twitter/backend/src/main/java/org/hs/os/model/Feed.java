@@ -10,6 +10,10 @@ import java.util.List;
 @Table(name = "feed_table")
 public class Feed {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+
     @Column(name = "keyword")
     private String keyword;
 
@@ -22,9 +26,7 @@ public class Feed {
 
     private Date suchIntervall;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
+
 
     @OneToMany
     @Cascade(org.hibernate.annotations.CascadeType.ALL)

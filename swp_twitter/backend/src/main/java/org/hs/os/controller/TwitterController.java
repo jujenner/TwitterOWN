@@ -65,6 +65,8 @@ public class TwitterController {
         return feedService.createFeed(keyword, count, new Date(period), new Date(end));
     }
 
+
+    // Ausblick: evtl Feed loeschen
     @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping(path = "feed/{id}")
     public void deleteFeed(@PathVariable long id) {

@@ -8,8 +8,6 @@ import twitter4j.conf.ConfigurationBuilder;
 @Component
 public class TwitterConfig {
 
-    //Authorisierungsprotokoll OAuth
-    //Aus TwitterProperties werden Zugangsdaten geholt
     public Twitter getTwitter() {
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
                 .setOAuthConsumerKey(TwitterProperties.CONSUMER_KEY)
@@ -20,3 +18,5 @@ public class TwitterConfig {
         return new TwitterFactory(configurationBuilder.build()).getInstance();
     }
 }
+
+

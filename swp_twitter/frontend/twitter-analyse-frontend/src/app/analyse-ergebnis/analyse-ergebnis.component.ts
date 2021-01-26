@@ -20,7 +20,9 @@ export class AnalyseErgebnisComponent implements OnInit {
 
  // Pie
  public pieChartLabels:string[] = ['Sehr Positiv', 'Positiv', 'Neutral','Negativ','Sehr Negativ'];
+
  public pieChartData:number[] = [0,0,0,0,0];
+
   public pieColors=[
   {
     backgroundColor: [
@@ -47,7 +49,7 @@ public letzteAkutalisierung = ""
 
   public refresh() {
     console.log("Refresh the data");
-    
+
     if(this.feed == null) return
     this.loadData(this.feed.id)
   }
@@ -59,7 +61,7 @@ public letzteAkutalisierung = ""
 
   /**
    * loadData
-   
+
 feedId: number   */
 
   public loadData(feedId: number) {
@@ -68,13 +70,13 @@ feedId: number   */
       this.keyword = feed.keyword
       var latestErgebnis= this.feed?.twitterStatus.sort((a: TwitterStatus, b: TwitterStatus) => {
           return b.erstelltAm.getTime() - a.erstelltAm.getTime()
-      }) 
-      
+      })
+
 
       if(latestErgebnis?.length != 0 && latestErgebnis != null){
         this.letzteAkutalisierung = latestErgebnis[0].erstelltAm.toLocaleString()
       }
-  
+
        var positivCount = 0
        var sehrPositivCount = 0
        var neutralCount = 0
@@ -126,7 +128,7 @@ feedId: number   */
        this.pieChartData = [sehrPositivCount, positivCount, neutralCount, negativeCount, sehrNegativCount]
 
     });
-    
+
   }
 
 }

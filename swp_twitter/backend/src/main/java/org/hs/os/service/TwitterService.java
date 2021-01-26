@@ -49,21 +49,20 @@ public class TwitterService {
 
     }
 
-    //Analyse der Tweets
+
     private Analyse analyseTweet(String text) {
         SentimentTyp result = analyseService.analyse(cleanTweet(text));
         return new Analyse(result);
     }
 
-    //Bereinigung der Tweets zur besseren Auswertung
+
     private String cleanTweet(String tweet) {
-        //Trim entfernt Leerzeichen
+
         return tweet.trim()
-                // remove links
                 .replaceAll("http.*?[\\S]+", "")
-                // remove hashtags
                 .replaceAll("#", "")
-                // correct all multiple white spaces to a single white space
                 .replaceAll("[\\s]+", " ");
     }
 }
+
+
