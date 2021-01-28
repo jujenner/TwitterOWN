@@ -8,6 +8,8 @@ import java.util.Date;
 @Table(name = "twitter_status")
 public class TwitterStatus {
 
+    //Quelle: https://www.baeldung.com/spring-boot-h2-database
+
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)

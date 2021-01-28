@@ -11,6 +11,8 @@ import java.util.concurrent.ScheduledFuture;
 @Service
 public class TaskService {
 
+    //Quelle: https://stackoverflow.com/questions/44644141/how-to-stop-a-scheduled-task-that-was-started-using-scheduled-annotation
+
     public ThreadPoolTaskScheduler getScheduler() {
         return scheduler;
     }

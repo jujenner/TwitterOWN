@@ -8,6 +8,8 @@ import twitter4j.conf.ConfigurationBuilder;
 @Component
 public class TwitterConfig {
 
+    // Methode zur Identifizierung bei Twitter
+    // Quelle: http://twitter4j.org/en/configuration.html
     public Twitter getTwitter() {
         ConfigurationBuilder configurationBuilder = new ConfigurationBuilder()
                 .setOAuthConsumerKey(TwitterProperties.CONSUMER_KEY)

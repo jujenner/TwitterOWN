@@ -18,6 +18,8 @@ import java.util.stream.Collectors;
 @RestController
 public class TwitterController {
 
+    //Quelle: https://github.com/aboullaite/sentiment-analysis/blob/master/backend/src/main/java/me/aboullaite/corenlp/sentimentanalysis/controllers/TweetsResource.java
+
     private final TwitterService twitterService;
     private final FeedService feedService;
     private final FeedRepository feedRepository;

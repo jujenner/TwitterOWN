@@ -27,22 +27,25 @@ public class TwitterService {
         this.analyseService = analyseService;
     }
 
+    //Quelle: https://aboullaite.me/stanford-corenlp-java/
     //Keyword und Count werden aus Twitter Controller (also der URL) übergeben
     public List<TwitterStatus> fetchTweets(String keyword, int count) throws TwitterException {
-        //Concat macht aus mehreren Zeichenketten eine Zeichenkette
-        //Re-Tweets und Antworten auf Tweets hinzufuegen/beruecksichtigen?
+        //Concat: Query zusammenfügen
+        //Re-Tweets und Antworten herausfiltern
         Query query = new Query(keyword.concat(" -filter:retweets -filter:replies"));
         query.setCount(count);
         //Sprache der Query
         query.setLocale("en");
         //Sprache nach der gesucht wird
         query.setLang("en");
+        //Suche nach den neusten Tweets
         query.setResultType(Query.ResultType.recent);
-        //Zugangsdaten (getTwitter) holen
+        //Zugangsdaten (getTwitter) holen und Übergabe der Query
         QueryResult result = twitterConfig.getTwitter().search(query);
         //Auslesen der Tweets
         List<Status> tweets = result.getTweets();
-        //Ablegen der Items/Tweets in Liste und Anzeigen aller Tweets
+
+        //Durchiterieren der Tweets-Liste und Übergabe
         return tweets.stream()
                 .map(item -> new TwitterStatus(keyword, item.getUser().getName(), analyseTweet(item.getText()), item.getId())
                 ).collect(Collectors.toList());
@@ -50,18 +53,19 @@ public class TwitterService {
     }
 
 
-    private Analyse analyseTweet(String text) {
-        SentimentTyp result = analyseService.analyse(cleanTweet(text));
-        return new Analyse(result);
-    }
-
-
+    //https://aboullaite.me/stanford-corenlp-java/
+    //Bereinigung der Tweets
     private String cleanTweet(String tweet) {
 
         return tweet.trim()
                 .replaceAll("http.*?[\\S]+", "")
                 .replaceAll("#", "")
                 .replaceAll("[\\s]+", " ");
+    }
+
+    private Analyse analyseTweet(String text) {
+        SentimentTyp result = analyseService.analyse(cleanTweet(text));
+        return new Analyse(result);
     }
 }
 
